@@ -1,0 +1,9 @@
+<h1><%= @podcast.name %></h1>
+<h2><%= @podcast.host %></h2>
+<h2><%= @podcast.episode_number %></h2>
+<h2><%= @podcast.episode_name %></h2>
+
+<form action="/podcasts/<%= @podcast.id %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<button type="submit">Delete Podcast</button>
+</form>
