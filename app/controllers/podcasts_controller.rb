@@ -1,6 +1,8 @@
 class PodcastsController < ApplicationController
 
-
+  get '/welcome' do
+     erb :welcome
+  end 
 
   get '/podcasts' do
       @podcasts = Podcast.all.reverse
@@ -9,12 +11,12 @@ class PodcastsController < ApplicationController
 
   get '/podcasts/new' do
       
-     erb :'/podcast/new' 
+     erb :'/podcasts/new' 
   end
 
   post '/podcasts' do
       podcast = Podcast.new(params)
-      if !podcast.podcast_name.empty? && !podcast.episode_name.empty?
+      if !podcast.name.empty? && !podcast.episode_name.empty?
           podcast.save
           redirect to '/podcasts'
       else
@@ -35,7 +37,7 @@ class PodcastsController < ApplicationController
 
   patch '/podcasts/:id' do
       @podcast = Podcast.find(params[:id])
-      if !params["podcast"]["podcast_name"].empty? && !params["podcast"]["episode_name"].empty?
+      if !params["podcast"]["name"].empty? && !params["podcast"]["episode_name"].empty?
           @podcast.update(params["podcasts"])
           redirect "/podcasts/#{params[:id]}"
 

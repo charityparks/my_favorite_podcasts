@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191231031810) do
+ActiveRecord::Schema.define(version: 20191231035728) do
 
   create_table "podcasts", force: :cascade do |t|
     t.string  "name"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20191231031810) do
     t.integer "episode_number"
     t.string  "episode_name"
     t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
   end
 
 end
