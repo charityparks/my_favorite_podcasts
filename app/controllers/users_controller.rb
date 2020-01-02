@@ -40,15 +40,16 @@ class UsersController < ApplicationController
                 session[:user_id] = user.id
                 redirect to '/podcasts'
             else
-                @error = "Account not found."
+                @error = "Account not found"
                 erb :'users/login'
-            end
+            end         
         end
     end
+
     #users can log out
     get '/logout' do
         session.clear
-        redirect to '/'
+        redirect to '/podcasts/welcome'
     end
 
 
