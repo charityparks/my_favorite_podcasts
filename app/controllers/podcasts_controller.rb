@@ -19,8 +19,8 @@ class PodcastsController < ApplicationController
     end
 
     post '/podcasts' do
-        binding.pry
         podcast = Podcast.new(params)
+      
         if !podcast.name.empty? && !podcast.episode_name.empty?
             podcast.save
             redirect to '/podcasts'
