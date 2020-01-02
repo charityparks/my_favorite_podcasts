@@ -3,6 +3,6 @@
 <a href="/podcasts/new">Add a Podcast</a>
 
 <% @podcasts.each do |podcast| %>
-    <h2><a href="/podcasts/<%=podcast.id %>"><%=podcast.name %></a></h2>
+    <h2><a href="/podcasts/<%=podcast.id %>"><%=podcast.name %></a> </h2>
     <h3><%=podcast.episode_name %></h3> 
     <% end %>

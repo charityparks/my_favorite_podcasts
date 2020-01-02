@@ -19,7 +19,8 @@ class PodcastsController < ApplicationController
     end
 
     post '/podcasts' do
-        @podcast = Podcast.new(params)
+        binding.pry
+        podcast = Podcast.new(params)
         if !podcast.name.empty? && !podcast.episode_name.empty?
             podcast.save
             redirect to '/podcasts'
@@ -42,7 +43,7 @@ class PodcastsController < ApplicationController
     patch '/podcasts/:id' do
         @podcast = Podcast.find(params[:id])
         if !params["podcast"]["name"].empty? && !params["podcast"]["episode_name"].empty?
-            @podcast.update(params["podcasts"])
+            @podcast.update(params["podcast"])
             redirect to "/podcasts/#{params[:id]}"   
 
         else

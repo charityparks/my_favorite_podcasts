@@ -1,17 +1,17 @@
-<h1>Edit Podcast <%=@podcast_name %></h1>
-
+<p><%= @error %></p>
+<h1>Edit Podcast <%=@podcast.name %></h1>
 <form action="/podcasts/<%= @podcast.id %>" method="post">
     <input type="hidden" id="hidden" name="_method" value="patch">
 
     <label>Podcast Name:</label>
-    <input type="text" name="name" value="<%=@podcast.name %>">
+    <input type="text" name="podcast[name]" value="<%=@podcast.name %>">
     <label>Host:</label>
-    <input type="text" name="host" value="<%=@podcast.host %>">
-<br>
+    <input type="text" name="podcast[host]" value="<%=@podcast.host %>">
+    <br>
     <label>Episode Number:</label/>
-    <input type="text" name="episode_number" value="<%=@podcast.episode_number %>">
+    <input type="text" name="podcast[episode_number]" value="<%=@podcast.episode_number %>">
     <label>Episode Name:</label>
-    <input type="text" name="episode_name" value="<%=@podcast.episode_name %>">
-<br>
+    <input type="text" name="podcast[episode_name]" value="<%=@podcast.episode_name %>">
+    <br>
     <button type="submit">Edit Podcast</button>
 </form>
