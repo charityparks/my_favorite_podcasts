@@ -5,8 +5,12 @@ class PodcastsController < ApplicationController
     end 
 
     get '/podcasts' do
-        @podcasts = Podcast.all.reverse
-        erb :'podcasts/index'
+        if User.find_by(session[:user_id])
+            @podcasts = Podcast.all.reverse
+            erb :'podcasts/index'
+        else
+            redirect to '/login'
+        end
     end
 
     get '/podcasts/new' do
