@@ -16,11 +16,10 @@ class ApplicationController < Sinatra::Base
   def logged_in?
     !!current_user
     # This is returning true or false. if the user is 
-    # not found it will return false. we're using the 
-    # double bang !! 
+    # not found it will return false. use the double bang !! 
   end
 
   def current_user
-    User.find_by(id: session[:user_id])
+    User.find_by(id: session[:user_id])   #or is it [:user.id]
   end
 end

@@ -1,14 +1,12 @@
 <h1>Podcasts!</h1>
-
 <a href="/podcasts/new">Add a Podcast</a>
-
+<br>
+<br>
 <% @podcasts.each do |podcast| %>
-<br>
-<br>
     <h3><a href="/podcasts/<%=podcast.id %>"><%=podcast.name %></a> </h3>
     <h4><%=podcast.episode_name %></h4>
-
-    <a href="/podcasts/<%= podcast.id %>/edit">Edit</a>
+    <% if current_user == podcast.user %>
+        <a href="/podcasts/<%= podcast.id %>/edit">Edit</a>
+    <% end %>
 <% end %>
-
     

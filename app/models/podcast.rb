@@ -1,6 +1,7 @@
 class Podcast < ActiveRecord::Base
-    has_many :users_podcasts
-    has_many :users, through: :users_podcasts
+    # has_many :users_podcasts
+    # has_many :users, through: :users_podcasts
+    belongs_to :user
 end
 
 
