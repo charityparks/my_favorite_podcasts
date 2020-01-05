@@ -12,4 +12,15 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
+
+  def logged_in?
+    !!current_user
+    # This is returning true or false. if the user is 
+    # not found it will return false. we're using the 
+    # double bang !! 
+  end
+
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 end
