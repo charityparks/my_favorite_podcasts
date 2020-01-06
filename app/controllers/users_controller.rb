@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-        erb :'/signup'    
+        erb :'users/signup'    
     end
   
     post '/signup' do
     user = User.new(params)  #instantiates a new user
         if user.username.empty? || user.password.empty?
             @error = "Please enter a valid username and password."
-            erb :'/signup'       
+            erb :'users/signup'       
         elsif User.find_by(username: user.username)
             @error = "Account with that username already exists."
-            erb :'/signup'
+            erb :'users/signup'
         else
             user.save
             session[:user_id] = user.id   #this line is logging them in

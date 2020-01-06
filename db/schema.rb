@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191231035728) do
+ActiveRecord::Schema.define(version: 20200106035430) do
 
   create_table "podcasts", force: :cascade do |t|
     t.string  "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20191231035728) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
   end
 
 end
