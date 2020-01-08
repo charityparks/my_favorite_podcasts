@@ -1,20 +1,17 @@
 class PodcastsController < ApplicationController
 
+    before do
+        require_login
+    end
+
     get '/podcasts' do
-        if logged_in? #User.find_by(id: session[:user_id])
-            @podcasts = Podcast.all.reverse
-            erb :'/podcasts/index'
-        else
-            redirect to '/login'
-        end
+        @podcasts = Podcast.all.reverse
+        erb :'/podcasts/index'
     end
 
     get '/podcasts/new' do
-        if logged_in?  #User.find_by(id: session[:user_id])
-            erb :'/podcasts/new' 
-        else
-            redirect to '/login'
-        end       
+        require_login
+        erb :'/podcasts/new'    
     end
 
     post '/podcasts' do
@@ -22,29 +19,25 @@ class PodcastsController < ApplicationController
         
         if !podcast.name.empty? && !podcast.episode_name.empty?
             podcast.save
-            redirect to '/podcasts'
+            erb :'/podcasts'
         else
             @error = "Data Invalid. Please Try Again."
-            redirect to '/podcasts/new'
+            erb :'/podcasts/new'
         end
     end
 
     get '/podcasts/:id' do
-        if logged_in?
-            @podcast = Podcast.find(params[:id])
+        @podcast = Podcast.find(params[:id])
+        if @podcast
             erb :'/podcasts/show'
         else
-            redirect to '/login'
+            redirect '/podcasts'
         end
     end
 
-    get '/podcasts/:id/edit' do 
-        if logged_in?  
-            @podcast = Podcast.find(params[:id])
-            erb :'/podcasts/edit'
-        else
-            redirect '/login'
-        end
+    get '/podcasts/:id/edit' do
+        @podcast = Podcast.find(params[:id])
+        erb :'/podcasts/edit'
     end
 
     patch '/podcasts/:id' do

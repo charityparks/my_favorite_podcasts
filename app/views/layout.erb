@@ -20,9 +20,15 @@
     </style>
   <body>
     <div>
-      <div><a href="/">Welcome</a></div>
+      
       <div><a href="/podcasts">Podcast list</a></div>
       <div><a href="/">Log Out</a></div>
+      <% else %>
+
+        <div><a href="/signup">Sign Up!</a></div>
+        <div><a href="/login">Log In!</a></div>
+      <% end %>
+        <div><a href="/">Welcome</a></div>
     </div>
 
     <div class="wrapper">
