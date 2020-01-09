@@ -20,7 +20,7 @@
     </style>
   <body>
     <div>
-     <% if %> 
+     <% if logged_in? %> 
       <div><a href="/podcasts">Podcast list</a></div>
       <div><a href="/">Log Out</a></div>
       <% else %>
@@ -36,7 +36,7 @@
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2019 <strong>MyFavoritePodcasts by Charity Parks</strong></small>
+        <small>&copy; 2020 <strong>MyFavoritePodcasts by Charity Parks</strong></small>
       </footer>
     </div>
 

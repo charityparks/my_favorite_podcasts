@@ -1,4 +1,4 @@
-class SessionsController < ActiveRecord::Base
+class SessionsController < ApplicationController
 
     get '/login' do
         erb :'users/login'
@@ -7,15 +7,28 @@ class SessionsController < ActiveRecord::Base
     post '/login' do
         if params["username"].empty? || params["password"].empty?
             @error = "Username and password can't be blank"
-            erb :'users/login'
+            erb :'users/login'  
         else
-            if user = User.find_by(username: params["username"], password: params["password"])
-                session[:user_id] = user.user_id
+            user = User.find_by(username: params["username"])
+            if user  && user.authenticate(params["password"])
+               
+                session[:user_id] = user.id
                 redirect '/podcasts'
             else
                 @error = "Account not found"
                 erb :'users/login'
             end
+        end  
+    end
+
+    get '/logout' do
+        if logged_in?
+        session.clear
+        elsif
+            redirect to "/"
+        else
+            redirect "/login"
         end
     end
 end
+    
