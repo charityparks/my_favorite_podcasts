@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def logged_in?
-      !!current_user
+        current_user
     # This is returning true or false. if the user is 
     # not found it will return false. use the double bang !! 
     end
