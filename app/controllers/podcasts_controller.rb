@@ -3,7 +3,7 @@ class PodcastsController < ApplicationController
     # before do
     #     require_login
     # end
-
+    
     get '/podcasts' do
         require_login
         @podcasts = Podcast.all.reverse

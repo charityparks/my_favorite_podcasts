@@ -15,20 +15,23 @@
   </head>
     <style>
     body {
-      background-color: #00cc7a
+      background-color: #170682
     }
     </style>
   <body>
-    <div>
-     <% if logged_in? %> 
-      <div><a href="/podcasts">Podcast list</a></div>
-      <div><a href="/logout">Log Out</a></div>
-      <% else %>
 
-        <div><a href="/signup">Sign Up!</a></div>
-        <div><a href="/login">Log In!</a></div>
+    <div>
+     <div><a href="/" class="button4" style="background-color:#4ef18f">Welcome</a></div>
+     <% if logged_in? %> 
+      <div><a href="/podcasts" class="button4" style="background-color:#4ef18f">Podcast List</a></div>
+      <div><a href="/logout" class="button4" style="background-color:#4ef18f">Log Out</a></div>
+     
+      <% else %>
+      
+      <div><a href="/signup" class="button4" style="background-color:#4ef18f">Sign Up!</a></div>  
+      <div><a href="/login" class="button4" style="background-color:#4ef18f">Log In</a></div>      
       <% end %>
-        <div><a href="/">Welcome</a></div>
+        
     </div>
 
     <div class="wrapper">
