@@ -1,9 +1,8 @@
 class PodcastsController < ApplicationController
-
-    # before do
-    #     require_login
-    # end
     
+#    READ   #index      
+
+
     get '/podcasts' do
         require_login
         @podcasts = Podcast.all.reverse
@@ -63,3 +62,5 @@ class PodcastsController < ApplicationController
         redirect '/podcasts'
     end
 end
+
+     # only owner of podcast entry can delete or edit    

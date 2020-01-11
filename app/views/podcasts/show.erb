@@ -5,5 +5,7 @@
 
 <form action="/podcasts/<%= @podcast.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <button type="submit">Delete Podcast</button>
+    <% if @podcast.user && @podcast.user.id == current_user.id %>
+        <button type="submit">Delete Podcast</button>
+    <% end %>
 </form>
