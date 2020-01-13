@@ -3,7 +3,7 @@ class PodcastsController < ApplicationController
 #    READ   #index      
 
 
-    get '/podcasts' do
+    get '/podcasts' do       
         require_login
         @podcasts = Podcast.all.reverse
         erb :'/podcasts/index'
