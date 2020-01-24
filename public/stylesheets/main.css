@@ -90,7 +90,7 @@
     border-radius: 2em;
     box-sizing: border-box;
     text-decoration: none;
-    font-family:'Roboto',sans-serif;
+    font-family:'Roboto', trebucket, sans-serif;
     font-weight: 300;
     color: #170682;
     text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
