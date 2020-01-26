@@ -8,3 +8,5 @@ To use the app, you would need to create an account using your username and pass
 
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+https://github.com/charityparks/my_favorite_podcasts/blob/master/LICENSE
