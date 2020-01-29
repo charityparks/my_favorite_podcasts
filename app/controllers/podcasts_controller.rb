@@ -37,15 +37,19 @@ class PodcastsController < ApplicationController
         end
     end
 
-    get '/podcasts/:id/edit' do
-        require_login
+    get '/podcasts/:id/edit' do               #fix edit from nonuser
+        require_login      
         @podcast = Podcast.find(params[:id])
-        erb :'/podcasts/edit'
+        authorized_user
+        if @podcast.user && session[:user_id] == @podcast.user.id
+            erb :'/podcasts/edit'
+        end        
     end
 
     patch '/podcasts/:id' do
         require_login
         @podcast = Podcast.find(params[:id])
+        authorized_user
         if !params["podcast"]["name"].empty? && !params["podcast"]["episode_name"].empty?
             @podcast.update(params["podcast"])
             redirect to "/podcasts/#{params[:id]}"   
@@ -58,6 +62,7 @@ class PodcastsController < ApplicationController
     delete '/podcasts/:id' do
         require_login
         podcast = Podcast.find(params[:id])
+        #authorized_user
         podcast.destroy
         redirect '/podcasts'
     end

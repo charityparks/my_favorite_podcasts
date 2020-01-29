@@ -28,4 +28,11 @@ class ApplicationController < Sinatra::Base
         redirect '/login'
       end
     end
+
+    def authorized_user        #user must be user who created entry to edit it
+      if @podcast.user != current_user
+        redirect to '/podcasts'
+      end
+    end
+
 end
